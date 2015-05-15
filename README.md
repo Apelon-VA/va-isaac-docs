@@ -79,7 +79,7 @@ Modify this section of settings.xml as necessary:
 
 
 ##Utility Scripts
-A few utility scripts are available in the **[scripts]](https://github.com/Apelon-VA/va-isaac-docs/tree/master/scripts)** sub-folder.  The scripts published
+A few utility scripts are available in the **[scripts](https://github.com/Apelon-VA/va-isaac-docs/tree/master/scripts)** sub-folder.  The scripts published
 so far are all [python](https://www.python.org/) scripts which aid in management of all of the projects that make up the ISAAC suite.
 
 To use these scripts, copy them into the same folder that contains all of your checked out ISAAC projects (likely, the parent folder of this project)
