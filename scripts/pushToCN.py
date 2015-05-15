@@ -1,6 +1,10 @@
 #! /usr/bin/python
 #
 # Various git commands that Dan uses to fetch from both CN and GH-A, and then push commits from GH-A to CN
+#
+# Note that this script does NOT push code from  your local development or master branch anywhere.  It only 
+# pushes code that has already been pushed to GH-A/develop to CN/develop, and GH-A/master to CN/master.
+# Note that is will push any local tags, however.
 
 # To use this script, you need to have your remote's named "CN" and "GH-A" (or update the variables below)
 #
@@ -33,8 +37,9 @@ for project in projects:
 	git("-C", project, "fetch", remoteMaster)
 	git("-C", project, "fetch", remoteSlave)
 	
-	print("Pushing develop branch from " + remoteMaster + " to " + remoteSlave)
-	git("-C", project, "push", remoteSlave, remoteMaster + "/develop:develop")
+	if project != 'va-isaac-docs':
+		print("Pushing develop branch from " + remoteMaster + " to " + remoteSlave)
+		git("-C", project, "push", remoteSlave, remoteMaster + "/develop:develop")
 
 	print("Pushing master branch from " + remoteMaster + " to " + remoteSlave)
 	git("-C", project, "push", remoteSlave, remoteMaster + "/master:master")
