@@ -22,7 +22,7 @@ Currently, there are 12 projects - each with its own repository - each independe
 - va-isaac-metadata - https://github.com/Apelon-VA/va-isaac-metadata.git
   - The Terminology metadata required to bootstrap the system.  This project outputs the terminology metadata in Java, eConcept (for loading into the database)
     and XML formats
-  va-isaac-mojo - https://github.com/Apelon-VA/va-isaac-mojo.git
+- va-isaac-mojo - https://github.com/Apelon-VA/va-isaac-mojo.git
   - Maven Mojo extensions which are used in other ISAAC projects, below, such as tooling for building a database.
 - va-newtons-cradle - https://github.com/Apelon-VA/va-newtons-cradle.git
   - The datastore implementation for the OCHRE API.
