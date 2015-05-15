@@ -164,6 +164,7 @@ Then reload the lifecycle file, and then doing a *Maven Update Project* on proje
 Eclipse currently has bugs in dealing with JavaFX code - and will produce copious warnings on classes that involve JavaFX libraries.  This issue can be 
 fixed temporarily as documented here:  https://bugs.eclipse.org/bugs/show_bug.cgi?id=431067#c9
 
+###REQUIRED
 Finally, in the project isaac-metadata/isaac-metadata-artifacts - you will need to manually edit the eclipse build path to resolve compiler errors.
 This is because the M2E integration does not know how to execute the code (our custom mojo) which generates the java source files from the metadata
 source files.
@@ -178,8 +179,8 @@ java source for eclipse to consume.
 ###Launching ISAAC from Eclipse
 Launching ISAAC from within Eclipse is most easily done by creating a run configuration in the **app-assembly** project.
 
-The main method is **gov.va.isaac.gui.App**.  Eclipse sometimes doesn't read the maven classpath properly when configuring a run configuration.  
-If this happens, simply add all of the ISAAC projects on the classpath tab of the Run Configuration.
+The main method is **gov.va.isaac.gui.App**.  Eclipse sometimes doesn't read the maven classpath properly when configuring a run configuration.  If this
+ happens, simply add all of the ISAAC projects on the classpath tab of the Run Configuration.
 
 Finally, you need a datastore.  Upon startup, ISAAC will try to locate the DB in the folder the JVM was launched from.  It is typically easiest to 
 place a copy of the ISAAC datastore within the va-isaac-gui-pa/app-assembly folder - resulting in this hierarchy:
