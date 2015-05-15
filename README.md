@@ -7,6 +7,9 @@ docbook which can be found on CollabNet:  https://csfe.aceworkspace.net/sf/wiki/
 Rather, this project is intended to be a simple, concise set of documentation that is geared toward developers that are trying to build
 the ISAAC suite of software.
 
+If you need a summary of the types of changes that have occurred with the migration away from the OTF APIs, see 
+https://github.com/Apelon-VA/va-isaac-docs/blob/master/OTFMigration.md
+
 ##Requirements
 ISAAC requires modern supporting software - this means Java 8, and Maven 3.x or newer.  
 
