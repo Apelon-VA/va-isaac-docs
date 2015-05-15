@@ -72,15 +72,16 @@ An Archiva server is hosted at https://va.maestrodev.com/archiva/repository/all/
 third-party libraries.  In addition, this server contains the access-restricted terminology files.  For this reason, you need credentials 
 for the Archiva server to download some resources.
 
-The example **resources/settings.xml** file in this project can be placed as specified by maven: https://maven.apache.org/settings.html in order
-to redirect your maven dependency requests through the ISAAC archiva server.  The example file also requires your credentials for ISAAC Archiva server.
+The example **[resources/settings.xml](https://raw.githubusercontent.com/Apelon-VA/va-isaac-docs/master/resources/settings.xml)** file in this project 
+can be placed as specified by maven: https://maven.apache.org/settings.html in order to redirect your maven dependency requests through the ISAAC archiva server.  
+The example file also requires your credentials for ISAAC Archiva server.
 
 Modify this section of settings.xml as necessary:
 ```
 <server>
     <id>maestro</id>
-    <username>**_YOUR_MAESTRODEV_USERNAME_**</username>
-    <password>**_YOUR_MAESTRODEV_PASSWORD_**</password>
+    <username>_YOUR_MAESTRODEV_USERNAME_</username>
+    <password>_YOUR_MAESTRODEV_PASSWORD_</password>
 </server>
 ```
 
