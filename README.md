@@ -21,7 +21,18 @@ Currently, there are 12 projects - each with its own repository - each independe
 - va-isaac-gui - https://github.com/Apelon-VA/va-isaac-gui.git
 - va-solor-goods - https://github.com/Apelon-VA/va-solor-goods.git
 - va-expression-service - https://github.com/Apelon-VA/va-expression-service.git
-- va-isaac-gui-pa - https://github.com/Apelon-VA/va-expression-service.git
+- va-isaac-gui-pa - https://github.com/Apelon-VA/va-isaac-gui-pa.git
+
+The GitHub repositories are the primary 'work' repositories for development.  
+**This is where developers should push their work.**
+
+Each of these repositories is also mirrored onto CollabNet
+into https://csfe.aceworkspace.net/sf/scm/do/listRepositories/projects.informatics_architecture/scm
+
+The CollabNet clone URLs follow the pattern: https://**username**@csfe.aceworkspace.net/gerrit/p/**projectname**.git or alternatively
+ssh://**username**@csfe.aceworkspace.net:29418/**projectname**.git
+
+The CollabNet repositories serve as a backup, and interact with the CollabNet issue trackers.
 
 ##Maven Build Mangement
 
