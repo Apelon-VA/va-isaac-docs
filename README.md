@@ -11,9 +11,18 @@ the ISAAC suite of software.
 Currently, there are 12 projects - each with its own repository - each independently versioned.
 
 - va-isaac-docs - https://github.com/Apelon-VA/va-isaac-docs.git
+  - This project
+  
 - va-isaac-parent - https://github.com/Apelon-VA/va-isaac-parent.git
+  - Maven 'parent' pom project.  Manages dependencies for all external dependencies.
+  
 - va-ochre - https://github.com/Apelon-VA/va-ochre.git
+  - The interfaces used throughout ISAAC
+  
 - va-isaac-metadata - https://github.com/Apelon-VA/va-isaac-metadata.git
+  - The Terminology metadata required to bootstrap the system.  This project outputs the terminology metadata in Java, eConcept (for loading into the database)
+    and XML formats.
+    
 - va-isaac-mojo - https://github.com/Apelon-VA/va-isaac-mojo.git
 - va-newtons-cradle - https://github.com/Apelon-VA/va-newtons-cradle.git
 - va-logic - https://github.com/Apelon-VA/va-logic.git
