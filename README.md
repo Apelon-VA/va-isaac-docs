@@ -113,19 +113,24 @@ Eclipse 4.4 or newer is required for Java 8 support.
 
 Eclipse [M2E](http://eclipse.org/m2e/) supports most aspects of our maven configuration files.  Upon initial import, a number of errors will occur.
 
-Lifecycle mapping errors such as:
+You should install any M2E plugins that are available to handle lifecycle configurations, so that things such as JaxB code generation work 
+correctly.
+
+However, some do not have plugins available, such as 
+
 - maven-plugin-plugin
 - hk2-inhabitant-generator
 - jacoco-maven-plugin
 - plexus-component-metadata
 
-Can be safely marked as "Ignore in Eclipse Preferences".
+These can be safely marked as "Ignore in Eclipse Preferences".
+
+**Tip** Do 'Ignore in Eclipse Preferences' just once for each type of error.  Then do a Maven -> Update Projects on all of the projects - the rest of the 
+duplicate lifecycle errors should go away.
 
 Alternately, in Window -> Preferences -> Maven -> Errors/Warnings you can specify that "Plugin execution not covered by lifecycle configuration" issues can be
 handled as warning instead of error.
 
-Note that you should install any M2E plugins that are available to handle lifecycle configurations, however, so that things such as JaxB code generation work 
-correctly.
 
 Some lifecycle issues cannot be automatically handled by eclipse, such as:
 "Artifact has not been packaged yet. When used on reactor artifact, copy should be executed after packaging: see MDEP-187."
@@ -193,6 +198,7 @@ You can obtain a datastore using one of the following options:
  - Build a datastore using the  va-solor-goods project - move the resulting datastore from the va-solor-goods *target* subfolder.
 
 ##Netbeans Configuration Notes
+To be written by a netbeans user...
 
 ##Logging Configuration
 The logging system is configured by the file **va-isaac-gui-pa/config/src/main/resources/log4j2.xml**.  By default, two log files are produced - 
