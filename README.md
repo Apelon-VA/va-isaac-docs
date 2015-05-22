@@ -14,7 +14,8 @@ https://github.com/Apelon-VA/va-isaac-docs/blob/master/OTFMigration.md
 ISAAC requires modern supporting software - this means Java 8, and Maven 3.x or newer.  
 
 ##Projects
-Currently, there are 12 projects - each with its own repository - each independently versioned.
+Currently, there are 12 projects - each with its own repository - each independently versioned.  Note, the order here is also the order
+the projects need to be built in, if you want to build the entire code stack.
 
 - va-isaac-docs - https://github.com/Apelon-VA/va-isaac-docs.git
   - This project - developer documentation
@@ -37,14 +38,14 @@ Currently, there are 12 projects - each with its own repository - each independe
   - A graphical front end for the ISAAC framework
 - va-solor-goods - https://github.com/Apelon-VA/va-solor-goods.git
   - Tooling to construct a datastore (newtons cradle) and a set of indexes (query-service) and publish the resulting artifacts for consumption
-- va-expression-service - https://github.com/Apelon-VA/va-expression-service.git
-  - An demo project that shows how to start an ISAAC service and run various queries against the system.
 - va-isaac-gui-pa - https://github.com/Apelon-VA/va-isaac-gui-pa.git
   - The *Assembly* project which is used to construct a GUI application for the end user.  While this project contains no code, it contains the 
     configuration for the assembly (things like users, change set repository location, etc) and the dependency set for the GUI (which GUI components
     should be included in the application).  It also contains the configuration for which datastore should be packaged with the GUI, and the installer
-    configuration.  The end result of building this project is a GUI application for the end user - which includes all necessary components for 
+    configuration.  The end result of building this project is a GUI application for the end user - which includes all necessary components from 
     the stack above.
+- va-expression-service - https://github.com/Apelon-VA/va-expression-service.git
+  - A demo project that shows how to start an ISAAC service and run various queries against the system.
 
 The GitHub repositories are the primary 'work' repositories for development.  
 **This is where developers should push their work.**
@@ -180,7 +181,8 @@ The jaxb2 plugin for Eclipse does not work properly if your eclipse was launched
 If you get an error like this:
 
 ```
-Execution default of goal org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3:generate failed: A required class was missing while executing org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3:generate: com/sun/xml/bind/api/ErrorListener
+Execution default of goal org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3:generate failed: A required class was 
+missing while executing org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3:generate: com/sun/xml/bind/api/ErrorListener
 ```
 
 You need to reconfigure eclipse to launch with a JDK.  The easiest way to do this is to edit the file **eclipse.ini**.  Add a **-vm** parameter, as shown here:
