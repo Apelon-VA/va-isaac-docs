@@ -140,14 +140,13 @@ However, some do not have plugins available, such as
 - jacoco-maven-plugin
 - plexus-component-metadata
 
-These can be safely marked as "Ignore in Eclipse Preferences".
+These can be safely marked as "Ignore in Eclipse Preferences".  You can do this through the "quick fix" options in eclipse, or by manually editing the lifecycle-mapping-metadata.xml file for eclipse.  (Instructions below)
 
 **Tip** Do 'Ignore in Eclipse Preferences' just once for each type of error.  Then do a Maven -> Update Projects on all of the projects - the rest of the 
 duplicate lifecycle errors should go away.
 
 Alternately, in Window -> Preferences -> Maven -> Errors/Warnings you can specify that "Plugin execution not covered by lifecycle configuration" issues can be
 handled as warning instead of error.
-
 
 Some lifecycle issues cannot be automatically handled by eclipse, such as:
 "Artifact has not been packaged yet. When used on reactor artifact, copy should be executed after packaging: see MDEP-187."
@@ -173,7 +172,10 @@ Add the following section:
     </pluginExecution>
 ```
 
-Then reload the lifecycle file, and then doing a *Maven Update Project* on projects that suffer from errors like this (such as app-assembly)
+Then reload the lifecycle file, and then doing a *Maven Update Project* on projects that suffer from errors like this (such as app-assembly).
+
+A complete  **[mappings file](https://github.com/Apelon-VA/va-isaac-docs/tree/master/resources/lifecycle-mapping-metadata.xml)** example which results in no build errors.
+
 
 ###Eclipse and jaxb2
 The jaxb2 plugin for Eclipse does not work properly if your eclipse was launched using a JRE.
