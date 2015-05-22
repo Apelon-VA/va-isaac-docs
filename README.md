@@ -113,6 +113,22 @@ Eclipse 4.4 or newer is required for Java 8 support.
 
 Eclipse [M2E](http://eclipse.org/m2e/) supports most aspects of our maven configuration files.  Upon initial import, a number of errors will occur.
 
+###Importing Projects
+The default integration of Git into eclipse does not clone into the workspace folder.  It is easier to work with the projects if you change this.
+
+In Window -> Preferences -> Team -> Git -> Default repository folder: - change that to your workspace location or **${workspace_loc}**
+
+Then:
+
+- Clone the projects you want to work on with Git - do not import into the workspace yet.
+- Import -> Maven -> Existing Maven Projects
+  - Select the project that you checked out
+  - It is also useful to "Add projet(s) to working set" at the time that you do the import
+  
+In the package explorer, you can then choose "Top Level Elements" from the 'Triangle' drop down menu, and change it to "Working Sets".  This will 
+give you a much better hierarchial view of the maven project structures.
+
+###M2E Lifecycle issues
 You should install any M2E plugins that are available to handle lifecycle configurations, so that things such as JaxB code generation work 
 correctly.
 
@@ -158,20 +174,36 @@ Add the following section:
 
 Then reload the lifecycle file, and then doing a *Maven Update Project* on projects that suffer from errors like this (such as app-assembly)
 
+###Eclipse and jaxb2
+The jaxb2 plugin for Eclipse does not work properly if your eclipse was launched using a JRE.
+
+If you get an error like this:
+
+```
+Execution default of goal org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3:generate failed: A required class was missing while executing org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3:generate: com/sun/xml/bind/api/ErrorListener
+```
+
+You need to reconfigure eclipse to launch with a JDK.  The easiest way to do this is to edit the file **eclipse.ini**.  Add a **-vm** parameter, as shown here:
+
+```
+-startup
+plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar
+-vm
+C:\Program Files\Java\jdk1.8.0_31\bin\javaw.exe
+--launcher.library
+plugins/org.eclipse.equinox.launcher.win32.win32.x86_64_1.1.200.v20150204-1316
+-product
+```
+
+###Maven Workspace Resolution
+Sometimes when you import projects into Maven, it imports them with "Workspace Resolution" disabled.  This can lead to erroneous errors about not being able to resolve
+other modules which are present in the same eclipse workspace.  Make sure Maven -> Enable Workspace Resolution is toggled.  To bulk update, enable workspace resolution, 
+then delete, and reimport all of the projects as maven projects.
+
+###Eclipse and JavaFX warnings
+
 Eclipse currently has bugs in dealing with JavaFX code - and will produce copious warnings on classes that involve JavaFX libraries.  This issue can be 
 fixed temporarily as documented here:  https://bugs.eclipse.org/bugs/show_bug.cgi?id=431067#c9
-
-###REQUIRED
-Finally, in the project isaac-metadata/isaac-metadata-artifacts - you will need to manually edit the eclipse build path to resolve compiler errors.
-This is because the M2E integration does not know how to execute the code (our custom mojo) which generates the java source files from the metadata
-source files.
-
-1. Manually run 'mvn compile' in this project.  This will create the folder **target/src/generated**
-2. Add the folder isaac-metadata-artifacts/target/src/generated to the source build path in eclipse - and ensure that this folder is also exported 
-  to dependent projects.
-
-If you manually change any of the metadata in isaac-metadata - you will have to manually run **mvn compile** in this project, to produce the updated
-java source for eclipse to consume.
 
 ###Launching ISAAC from Eclipse
 Launching ISAAC from within Eclipse is most easily done by creating a run configuration in the **app-assembly** project.
@@ -196,6 +228,18 @@ You can obtain a datastore using one of the following options:
    va-isaac-gui-pa\app-assembly\target folder.  Move this datastore folder up one folder.
  - Download and unzip a datastore from Archiva https://va.maestrodev.com/archiva/#browse/gov.vha.solor.modules
  - Build a datastore using the  va-solor-goods project - move the resulting datastore from the va-solor-goods *target* subfolder.
+
+###REQUIRED hack for having a local copy of isaac-metadata
+Finally, in the project isaac-metadata/isaac-metadata-artifacts - you will need to manually edit the eclipse build path to resolve compiler errors.
+This is because the M2E integration does not know how to execute the code (our custom mojo) which generates the java source files from the metadata
+source files.
+
+1. Manually run 'mvn compile' in this project.  This will create the folder **target/src/generated**
+2. Add the folder isaac-metadata-artifacts/target/src/generated to the source build path in eclipse - and ensure that this folder is also exported 
+  to dependent projects.
+
+If you manually change any of the metadata in isaac-metadata - you will have to manually run **mvn compile** in this project, to produce the updated
+java source for eclipse to consume.
 
 ##Netbeans Configuration Notes
 To be written by a netbeans user...
