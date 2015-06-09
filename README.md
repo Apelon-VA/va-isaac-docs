@@ -233,7 +233,23 @@ You can obtain a datastore using one of the following options:
  - Download and unzip a datastore from Archiva https://va.maestrodev.com/archiva/#browse/gov.vha.solor.modules
  - Build a datastore using the  va-solor-goods project - move the resulting datastore from the va-solor-goods *target* subfolder.
  
-###Required HEAP size for running with a DB
+
+###REQUIRED hack for having a local copy of isaac-metadata
+Finally, in the project isaac-metadata/isaac-metadata-artifacts - you will need to manually edit the eclipse build path to resolve compiler errors.
+This is because the M2E integration does not know how to execute the code (our custom mojo) which generates the java source files from the metadata
+source files.
+
+1. Manually run 'mvn compile' in this project.  This will create the folder **target/src/generated**
+2. Add the folder isaac-metadata-artifacts/target/src/generated to the source build path in eclipse - and ensure that this folder is also exported 
+  to dependent projects.
+
+If you manually change any of the metadata in isaac-metadata - you will have to manually run **mvn compile** in this project, to produce the updated
+java source for eclipse to consume.
+
+##Netbeans Configuration Notes
+To be written by a netbeans user...
+
+##Required HEAP size for running with a DB
 ISAAC currently requires at least 5 GB of java HEAP to run with the full SNOMED database.  To run with the full SOLOR database, you need at least
 6 GB of HEAP.  Unless your system has more than 24 GB of RAM, the default JVM max for the HEAP will be inadequate - as the JVM selects 1/4 of your 
 RAM as the default max.  
@@ -251,21 +267,6 @@ Setting a larger HEAP size is encouraged, if you have a proper development syste
 The G1GC setting enables a newer garbage collector that does a better job at preventing long pauses in the GUI.  The MetaspaceSize parameter is required
 to prevent a long pause during the initial usage of the GUI.  These parameters are automatically set when an end user installs ISAAC, and are included in 
 the command-line launch scripts.  It is only when running within an IDE environment that you need to manually specify them.
-
-###REQUIRED hack for having a local copy of isaac-metadata
-Finally, in the project isaac-metadata/isaac-metadata-artifacts - you will need to manually edit the eclipse build path to resolve compiler errors.
-This is because the M2E integration does not know how to execute the code (our custom mojo) which generates the java source files from the metadata
-source files.
-
-1. Manually run 'mvn compile' in this project.  This will create the folder **target/src/generated**
-2. Add the folder isaac-metadata-artifacts/target/src/generated to the source build path in eclipse - and ensure that this folder is also exported 
-  to dependent projects.
-
-If you manually change any of the metadata in isaac-metadata - you will have to manually run **mvn compile** in this project, to produce the updated
-java source for eclipse to consume.
-
-##Netbeans Configuration Notes
-To be written by a netbeans user...
 
 ##Logging Configuration
 The logging system is configured by the file **va-isaac-gui-pa/config/src/main/resources/log4j2.xml**.  By default, two log files are produced - 
