@@ -232,6 +232,25 @@ You can obtain a datastore using one of the following options:
    va-isaac-gui-pa\app-assembly\target folder.  Move this datastore folder up one folder.
  - Download and unzip a datastore from Archiva https://va.maestrodev.com/archiva/#browse/gov.vha.solor.modules
  - Build a datastore using the  va-solor-goods project - move the resulting datastore from the va-solor-goods *target* subfolder.
+ 
+###Required HEAP size for running with a DB
+ISAAC currently requires at least 5 GB of java HEAP to run with the full SNOMED database.  To run with the full SOLOR database, you need at least
+6 GB of HEAP.  Unless your system has more than 24 GB of RAM, the default JVM max for the HEAP will be inadequate - as the JVM selects 1/4 of your 
+RAM as the default max.  
+
+Furthermore, two other options (below) further improve performance.
+
+The recommended configuration to pass into the JVM launch is:
+
+```
+-Xmx6g -XX:+UseG1GC -XX:MetaspaceSize=100M
+```
+
+Setting a larger HEAP size is encouraged, if you have a proper development system :)
+
+The G1GC setting enables a newer garbage collector that does a better job at preventing long pauses in the GUI.  The MetaspaceSize parameter is required
+to prevent a long pause during the initial usage of the GUI.  These parameters are automatically set when an end user installs ISAAC, and are included in 
+the command-line launch scripts.  It is only when running within an IDE environment that you need to manually specify them.
 
 ###REQUIRED hack for having a local copy of isaac-metadata
 Finally, in the project isaac-metadata/isaac-metadata-artifacts - you will need to manually edit the eclipse build path to resolve compiler errors.
