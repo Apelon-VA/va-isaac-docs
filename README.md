@@ -247,10 +247,16 @@ If you manually change any of the metadata in isaac-metadata - you will have to 
 java source for eclipse to consume.
 
 ##Netbeans Configuration Notes
-You will need to add the Run configurations in Netbeans just like Eclipse. Click the down arrow next to dropdown that says "<default config?" > Customize > Run. Add **gov.va.isaac.gui.App** to the Main Class Section and **-Xmx6g -XX:+UseG1GC -XX:MetaspaceSize=100M ** to the VM Options section. 
+You will need to add the Run configurations in Netbeans just like Eclipse. To get to the run config, click the down arrow next to dropdown menu that says "<default config>" > Customize > Run. 
+- Main Class **gov.va.isaac.gui.App** 
+- VM Options: **-Xmx6g -XX:+UseG1GC -XX:MetaspaceSize=100M ** 
+- Working Directory: Choose the app-assembly folder from the va-isaac-gui-pa directory
+Choose Build > Compile from the Category Tree
+- Java Platform > Manage Java Platforms > Here you need to verify that you are using jdk1.8.0_31 and not jdk1.8.0_40 because revision 40 contains Java FX UI bugs that break ISAAC's GUI. You may need to Add a Platform and choose the folder that contains revision 31. You can download that from that Java Download Archives if you don't already have it.
 
-The first issue I ran into was adding the correct dependencies. After you import the ISAAC projects, you must add the correct classpatht that netbeans is not getting from Application Assembly POM. This needs to be researched further.
+When saving run configurations I found it finicky as they sometimes would not save, and I would have to kep re-adding them.
 
+To enable use of the big green play buton, you must choose the ISAAC Application Assembly module from the "ISAAC Project Assembly Parent" project and Right Click > Set as Main Project.
 
 ##Required HEAP size for running with a DB
 ISAAC currently requires at least 5 GB of java HEAP to run with the full SNOMED database.  To run with the full SOLOR database, you need at least
