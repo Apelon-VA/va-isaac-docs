@@ -151,7 +151,7 @@ handled as warning instead of error.
 Some lifecycle issues cannot be automatically handled by eclipse, such as:
 "Artifact has not been packaged yet. When used on reactor artifact, copy should be executed after packaging: see MDEP-187."
 
-This error can be removed by manually editing the lifecycle file within eclipse (Window -> Preferences -> Maven -> Lifecycle Mappings -> Open...)
+This error can be removed by manually edinting the lifecycle file within eclipse (Window -> Preferences -> Maven -> Lifecycle Mappings -> Open...)
 
 Add the following section:
 
@@ -248,6 +248,7 @@ java source for eclipse to consume.
 
 ##Netbeans Configuration Notes
 You will need to add the Run configurations in Netbeans just like Eclipse. Click the down arrow next to dropdown that says "<default config?" > Customize > Run. Add **gov.va.isaac.gui.App** to the Main Class Section and **-Xmx6g -XX:+UseG1GC -XX:MetaspaceSize=100M ** to the VM Options section. 
+
 The first issue I ran into was adding the correct dependencies. After you import the ISAAC projects, you must add the correct classpatht that netbeans is not getting from Application Assembly POM. This needs to be researched further.
 
 
