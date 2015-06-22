@@ -27,7 +27,7 @@ remoteOne = 'origin'
 gitHubURL = 'https://github.com/Apelon-VA/'
 
 for project in projects:
-        if os.path.isdir(os.getcwd() + project):
+        if os.path.isdir(os.getcwd() + project)== False:
                 print(os.getcwd() + project + " does not exist")
                 thisProjectUrl = gitHubURL + project + '.git'
                 print("==================================")
