@@ -9,7 +9,8 @@ import subprocess
 import os
 import sys
 
-projects = ['va-ochre',
+projects = ['va-isaac-parent',
+			'va-ochre',
 			'va-isaac-metadata',
 			'va-isaac-mojo',
 			'va-newtons-cradle',
@@ -21,36 +22,26 @@ projects = ['va-ochre',
 			'va-isaac-gui-pa']
 
 
-args = ['-e', 'clean']
+defaultArgs = ['-e', 'clean']
 
-def mvn(*args):
-	print("Running " )
-	print(args)
-	print(" in " + os.getcwd())
-	mvnLocation = "C:\\Program Files\\Maven\\bin\\mvn.bat"
-	return print("Output: " + subprocess.check_call([mvnLocation] + list(args)))
+def mvn(args):
+	return subprocess.check_call(['mvn'] + args)
 
 for project in projects:
-        if os.path.isdir(os.getcwd() + project)== False:
-                cwd = os.getcwd()
-                print("In: " + cwd + " Entering project " + project)
-                print("Enviorment: " + os.environ['JAVA_HOME'])
-                os.chdir(project)       
-                        
-                if project == 'va-expression-service' or project == 'va-isaac-gui-pa':
-                        args.extend(['package'])
-                else:
-                        args.extend(['install'])
+	cwd = os.getcwd()
+	print("In: " + cwd + " Entering project " + project)
+	os.chdir(project)
 
-                if(len(sys.argv) > 1):
-                        if(str(sys.argv[1]) == 'skipTest'):
-                                args.extend(['-DskipTests'])
-                print ("Build Argument")
-                print (args)
+	args = defaultArgs[:]
+	if project == 'va-expression-service' or project == 'va-isaac-gui-pa':
+		args.extend(['package'])
+	else:
+		args.extend(['install'])
 
-                #This fails the build, if it results in a non-0 exit status
-                mvn(args)
-                
-                os.chdir(os.pardir)
-        else:
-                 print(project + " folder does not exists in " + os.getcwd())
+	print ("Build Argument")
+	print (args)
+
+	#This fails the build, if it results in a non-0 exit status
+	mvn(args)
+	
+	os.chdir(os.pardir)
