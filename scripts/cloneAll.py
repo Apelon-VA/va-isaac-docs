@@ -22,6 +22,7 @@ def git(*args):
 		return subprocess.check_call(['git'] + list(args))
 
 gitHubURL = 'https://github.com/Apelon-VA/'
+branch = 'develop'
 
 for project in projects:
 		if os.path.isdir(os.getcwd() + os.sep + project)== False:
@@ -29,7 +30,14 @@ for project in projects:
 				thisProjectUrl = gitHubURL + project + '.git'
 				print("==================================")
 				print("Cloning Latest From " + project)
-				git("clone", thisProjectUrl)
+				
+				tmpBranch = ''
+				if project == 'va-isaac-docs':
+					tmpBranch = 'master'
+				else:
+					tmpBranch = branch
+				
+				git("clone", "--branch", tmpBranch, thisProjectUrl)
 				print("==================================")
 				print("");
 		else:
