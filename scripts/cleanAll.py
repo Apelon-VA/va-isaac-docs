@@ -18,8 +18,13 @@ projects = ['va-isaac-parent',
 			'va-expression-service', 
 			'va-isaac-gui-pa']
 
+shellVar=False
+
+if (os.name == 'nt'):
+	shellVar=True
+
 def mvn(*args):
-	return subprocess.check_call(['mvn'] + list(args), Shell=True)
+	return subprocess.check_call(['mvn'] + list(args), shell=shellVar)
 
 for project in projects:
 	if os.path.isdir(os.getcwd() + os.sep + project):

@@ -24,8 +24,13 @@ projects = ['va-isaac-parent',
 
 defaultArgs = ['-e', 'clean']
 
+shellVar=False
+
+if (os.name == 'nt'):
+	shellVar=True
+
 def mvn(args):
-	return subprocess.check_call(['mvn'] + args, Shell=True)
+	return subprocess.check_call(['mvn'] + args, shell=shellVar)
 
 
 for project in projects:
