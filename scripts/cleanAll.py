@@ -8,8 +8,9 @@
 import subprocess
 import os
 
-projects = ['va-isaac-parent',
-			'va-ochre', 
+projects = ['va-isaac-docs',
+            'va-isaac-parent',
+            'va-ochre',
 			'va-isaac-metadata', 
 			'va-isaac-mojo', 
 			'va-newtons-cradle', 
