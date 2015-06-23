@@ -29,25 +29,21 @@ def mvn(args):
 
 
 for project in projects:
-	if os.path.isdir(os.getcwd() + project):
-		cwd = os.getcwd()
-		print("In: " + cwd + " Entering project " + project)
-		os.chdir(project)
+	cwd = os.getcwd()
+	print("In: " + cwd + " Entering project " + project)
+	os.chdir(project)
 
-		args = defaultArgs[:]
-		if project == 'va-expression-service' or project == 'va-isaac-gui-pa':
-			args.extend(['package'])
-		else:
-			args.extend(['install'])
-
-		print ("Build Argument")
-		print (args)
-
-		#This fails the build, if it results in a non-0 exit status
-		mvn(args)
-		
-		os.chdir(os.pardir)
+	args = defaultArgs[:]
+	if project == 'va-expression-service' or project == 'va-isaac-gui-pa':
+		args.extend(['package'])
 	else:
-		print(project + " folder does not exist")
-		# TODO: Add a flag to clone the project if it does not exist yet
+		args.extend(['install'])
+
+	print ("Build Argument")
+	print (args)
+
+	#This fails the build, if it results in a non-0 exit status
+	mvn(args)
+	
+	os.chdir(os.pardir)
 
