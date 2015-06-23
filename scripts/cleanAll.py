@@ -27,3 +27,5 @@ for project in projects:
 		print("Cleaning " + project)
 		mvn("clean")
 		os.chdir("..")
+	else:
+		print(project + " does not exist!")
