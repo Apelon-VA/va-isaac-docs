@@ -27,8 +27,12 @@ def mvn(*args):
 	print("Running " )
 	print(args)
 	print(" in " + os.getcwd())
-	mvnLocation = "C:\\Program Files\\Maven\\bin\\mvn.bat"
-	return print("Output: " + subprocess.check_call([mvnLocation] + list(args)))
+	
+	# Windows Users might need to pass in the direct location of Maven. Like this:
+	# mvnLocation = "C:\\Program Files\\Maven\\bin\\mvn.bat"
+	# return print("Output: " + subprocess.check_call([mvnLocation] + list(args)))
+	
+	return print("Output: " + subprocess.check_call(['mvn'] + list(args)))
 
 for project in projects:
         if os.path.isdir(os.getcwd() + project)== False:
