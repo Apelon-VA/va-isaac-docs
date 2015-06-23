@@ -1,15 +1,13 @@
 #! /usr/bin/python
 #
-# Various git commands that Dan uses to fetch all projects from all remotes
-
-# To use this script, you need to have your remote's named "CN" and "GH-A"
+# Python script to go to each ISAAC project folder and execute a maven clean
 #
 
 import subprocess
 import os
 
 projects = ['va-isaac-parent',
-			'va-ochre', 
+			'va-ochre',
 			'va-isaac-metadata', 
 			'va-isaac-mojo', 
 			'va-newtons-cradle', 
@@ -21,10 +19,11 @@ projects = ['va-isaac-parent',
 			'va-isaac-gui-pa']
 
 def mvn(*args):
-	return subprocess.check_call(['mvn'] + list(args))
+	return subprocess.check_call(['mvn'] + list(args), Shell=True)
 
 for project in projects:
-	os.chdir(project)
-	print("Cleaning " + project)
-	mvn("clean")
-	os.chdir("..")
+	if os.path.isdir(os.getcwd() + os.sep + project):
+		os.chdir(project)
+		print("Cleaning " + project)
+		mvn("clean")
+		os.chdir("..")

@@ -8,18 +8,18 @@ import os
 projects = ['va-isaac-docs',
 			'va-isaac-parent',
 			'va-ochre',
-			'va-isaac-metadata',
-			'va-isaac-mojo',
-			'va-newtons-cradle',
-			'va-logic',
-			'va-query-service',
-			'va-isaac-gui',
-			'va-solor-goods',
-			'va-expression-service',
+			'va-isaac-metadata', 
+			'va-isaac-mojo', 
+			'va-newtons-cradle', 
+			'va-logic', 
+			'va-query-service', 
+			'va-isaac-gui', 
+			'va-solor-goods', 
+			'va-expression-service', 
 			'va-isaac-gui-pa']
 
 def git(*args):
-		return subprocess.check_call(['git'] + list(args))
+	return subprocess.check_call(['git'] + list(args))
 
 gitHubURL = 'https://github.com/Apelon-VA/'
 branch = 'develop'

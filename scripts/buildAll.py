@@ -25,7 +25,8 @@ projects = ['va-isaac-parent',
 defaultArgs = ['-e', 'clean']
 
 def mvn(args):
-	return subprocess.check_call(['mvn'] + args)
+	return subprocess.check_call(['mvn'] + args, Shell=True)
+
 
 for project in projects:
 	cwd = os.getcwd()
