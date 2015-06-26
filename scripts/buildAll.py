@@ -1,14 +1,15 @@
 #! /usr/bin/python
 #
 # Build the entire ISAAC Project
-#
-#
-#
 
 import subprocess
 import os
 import sys
-
+import argparse
+parser = argparse.ArgumentParser(description='Build entire ISAAC Project Suite')
+parser.add_argument('-s', '--skipTests', action='store_true',
+                   help='Skip the Maven Tests by executing the install command with the -DskipTests flag')
+				   
 projects = ['va-isaac-parent',
 			'va-ochre',
 			'va-isaac-metadata',
@@ -21,9 +22,8 @@ projects = ['va-isaac-parent',
 			'va-expression-service',
 			'va-isaac-gui-pa']
 
-
+cliArgs = parser.parse_args()
 defaultArgs = ['-e', 'clean']
-
 shellVar=False
 
 if (os.name == 'nt'):
@@ -43,6 +43,9 @@ for project in projects:
 		args.extend(['package'])
 	else:
 		args.extend(['install'])
+		
+	if cliArgs.skipTests:
+		args.extend(['-DskipTests'])
 
 	print ("Build Argument")
 	print (args)
