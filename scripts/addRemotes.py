@@ -1,8 +1,6 @@
 #! /usr/bin/python
 #
-# Merge (synchronize) the ISAAC-Developers repositories
-# with their forked upstream counterparts on Apelon-VA 
-# account
+# Merge (synchronize) the ISAAC-Developers repositories  with their forked upstream counterparts on Apelon-VA account
 
 
 import subprocess
@@ -10,9 +8,9 @@ import os
 import argparse
 parser = argparse.ArgumentParser(description='Merge ISAAC-Developers GitHub Account with the Forked repositories on the Apelon-VA GitHub account')
 parser.add_argument('-s', '--branch', type=string, default=develop,
-                   help='The default branch is develop, but you can specify any branch here')
+					help='The default branch is develop, but you can specify any branch here')
 # TODO: Finish implementing CLI Arguments for the branch
-				   
+
 projects = ['va-isaac-docs',
 			'va-isaac-parent',
 			'va-ochre',
@@ -21,10 +19,10 @@ projects = ['va-isaac-docs',
 			'va-newtons-cradle', 
 			'va-logic', 
 			'va-query-service', 
-			'va-isaac-gui', 
 			'va-solor-goods', 
-			'va-expression-service', 
-			'va-isaac-gui-pa']
+			'va-isaac-gui',
+			'va-isaac-gui-pa', 
+			'va-expression-service']
 
 if (os.name == 'nt'):
 	shellVar=True

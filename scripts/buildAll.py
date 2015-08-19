@@ -8,8 +8,8 @@ import sys
 import argparse
 parser = argparse.ArgumentParser(description='Build entire ISAAC Project Suite')
 parser.add_argument('-s', '--skipTests', action='store_true',
-                   help='Skip the Maven Tests by executing the install command with the -DskipTests flag')
-				   
+					help='Skip the Maven Tests by executing the install command with the -DskipTests flag')
+
 projects = ['va-isaac-parent',
 			'va-ochre',
 			'va-isaac-metadata',
@@ -17,10 +17,10 @@ projects = ['va-isaac-parent',
 			'va-newtons-cradle',
 			'va-logic',
 			'va-query-service',
-			'va-isaac-gui',
 			'va-solor-goods',
-			'va-expression-service',
-			'va-isaac-gui-pa']
+			'va-isaac-gui',
+			'va-isaac-gui-pa',
+			'va-expression-service']
 
 cliArgs = parser.parse_args()
 defaultArgs = ['-e', 'clean']

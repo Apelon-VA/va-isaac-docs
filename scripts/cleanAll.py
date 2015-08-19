@@ -2,21 +2,25 @@
 #
 # Python script to go to each ISAAC project folder and execute a maven clean
 #
+#
+#
 
 import subprocess
 import os
 
+#
+
 projects = ['va-isaac-parent',
 			'va-ochre',
-			'va-isaac-metadata', 
-			'va-isaac-mojo', 
-			'va-newtons-cradle', 
-			'va-logic', 
-			'va-query-service', 
-			'va-isaac-gui', 
-			'va-solor-goods', 
-			'va-expression-service', 
-			'va-isaac-gui-pa']
+			'va-isaac-metadata',
+			'va-isaac-mojo',
+			'va-newtons-cradle',
+			'va-logic',
+			'va-query-service',
+			'va-solor-goods',
+			'va-isaac-gui',
+			'va-isaac-gui-pa',
+			'va-expression-service']
 
 shellVar=False
 
