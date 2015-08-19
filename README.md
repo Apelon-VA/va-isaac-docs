@@ -34,10 +34,10 @@ the projects need to be built in, if you want to build the entire code stack.
   - The classifier implementation for the OCHRE API
 - va-query-service - https://github.com/Apelon-VA/va-query-service.git
   - The Query Service implementation, which includes Lucene full-text indexing capabilities
-- va-isaac-gui - https://github.com/Apelon-VA/va-isaac-gui.git
-  - A graphical front end for the ISAAC framework
 - va-solor-goods - https://github.com/Apelon-VA/va-solor-goods.git
   - Tooling to construct a datastore (newtons cradle) and a set of indexes (query-service) and publish the resulting artifacts for consumption
+- va-isaac-gui - https://github.com/Apelon-VA/va-isaac-gui.git
+  - A graphical front end for the ISAAC framework
 - va-isaac-gui-pa - https://github.com/Apelon-VA/va-isaac-gui-pa.git
   - The *Assembly* project which is used to construct a GUI application for the end user.  While this project contains no code, it contains the 
     configuration for the assembly (things like users, change set repository location, etc) and the dependency set for the GUI (which GUI components
@@ -87,6 +87,8 @@ A few utility scripts are available in the **[scripts](https://github.com/Apelon
 so far are all [python](https://www.python.org/) scripts which aid in management of all of the projects that make up the ISAAC suite.
 
 To use these scripts, copy them into the same folder that contains all of your checked out ISAAC projects (likely, the parent folder of this project)
+
+- cloneAll.py - Executes **git clone --branch 'branchname'** to pull down all of the project code from GitHub
 
 - buildAll.py - Executes **mvn -e clean install** or **mvn -e clean package** on each project *in the correct order* to effect a complete build of the entire
 ISAAC suite.

@@ -24,3 +24,24 @@ ASAP.
       the value is greater than 0, and translate the concept stream ID into a NID automatically. 
     - Likewise, you can pass NIDs into APIs that expect a sequence identifier, and it will translate appropriately.  However, runtime errors will result
       if a NID that represents a Concept is passed into an API that expects a sememe sequence identifier, for example.
+      
+## OCHRE Model Migration
+
+- The codebase currently only supports the OCHRE concept model.  All references to things from the org.ihtsdo packages should be considered deprecated, and removed.
+- Many of the org.ihtsdo APIs no longer work correctly.  They will not be fixed - convert over to corresponding gov.vha.ochre APIs
+
+
+- va-isaac-metadata has a new module now - you will likely need to import this into eclipse
+This new module contains utility code that needs to exist in the dependency chain AFTER the OCHRE APIs and the metadata construction - but BEFORE implementation code, like va-newtons-cradle.  It provides a home for utility methods that are not DB implementation specific.
+
+- va-isaac-gui has one less module now ("constants") - if eclipse still has remnants of it, you can delete it
+- The build order has been slightly tweaked - va-solor-goods no longer has a dependency on va-isaac-gui - I've updated the python scripts to match (that said, there is nothing wrong with continuing to build va-isaac-gui before va-solor-goods
+
+API changes:
+
+- Anything related to DynamicSememe / DynamicRefex  has been redone using the ochre APIs, and a more consistent naming convention.  DynamicSememe no longer exists in the old tcc APIs (as it was completely broken anyway)
+
+- The OTF_Concept_Model has been removed (but left the framework in place, in case we ever need to migrate to another concept model)
+
+- The APIs into the lucene query indexes have changed.  There have been significant changes to how content is indexed to align with the ochre concept model.  In general, the index is much more powerful now.  There are currently 3 indexes - one that handles descriptions (SememeType Description), one that handles Dynamic Sememes - any of the attached column(s) - and one that handles other SememeTypes - STRING and LONG for now - with the latter handling things like SCTIDs.  The query API now allows  you to restrict a search by the Sememe Assemblage - so you can search within the Sememe Index for things of type SNOMED_INTEGER_ID
+
