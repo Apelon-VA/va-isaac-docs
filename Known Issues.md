@@ -4,13 +4,6 @@ Various known issues across the ISAAC framework and other notes...
 
 ## Regressions (primarily)
 
-- Creating relationships via Blueprint API results in rels that are only navigable from child to parent
-  - The index that supports parent to child naviation is not being properly updated during the blueprint commit process.
-- Creating Dynamic Refexes (especially nested dynamic refexes) doesn't work properly via blueprint API.
-  - The nested refexes simply vanish... don't seem to be retrievable by any API call.
-- The removal of annotation vs member style on refexes has broken much logic in the GUI code
-  - Many things were special cased based on which style or refex it was - that information no longer exists - so things don't work as expected.
-  - This won't improve until we chop the annotation style flag out of the API, and update the GUI code accordingly
 - Creating new concepts / descriptions via Blueprint API is not currently updating the lucene indexes
 - There is no functioning commit notification / listener mechanism
   - This breaks the existing workflow implementation
@@ -23,7 +16,6 @@ Various known issues across the ISAAC framework and other notes...
   - The shutdown sequence is also rather slow - leading to users killing the process - which - corrupts the DB per above.
   - The writes during shutdown make me wonder when things are actually written to disk.  Editors don't can't work with a tool that could lose all of their 
     work if something fails 4 hours into the day - and they can't run the shutdown sequence.
-- Some (we assume) duplicate relationships being returned at times (haven't investigated)
 
 
 ## Needed functionality
@@ -44,4 +36,3 @@ Various known issues across the ISAAC framework and other notes...
 ## General TODOs
 - A bunch of JUnit tests still haven't made the transition from OTF to the ISAAC framework - need to be repaired / brought back.
 - Much code needs to be ported from Blueprint APIs to Builder APIs, so we can throw out the Blueprint stuff
-- Dan has started working on porting the Dynamic Refex/Sememe code over to the Builder API, and refactoring it to be consistently DynamicSememe - but ETA unknown.
