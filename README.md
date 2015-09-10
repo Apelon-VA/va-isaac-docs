@@ -30,10 +30,10 @@ the projects need to be built in, if you want to build the entire code stack.
   - Maven Mojo extensions which are used in other ISAAC projects, below, such as tooling for building a database.
 - va-newtons-cradle - https://github.com/Apelon-VA/va-newtons-cradle.git
   - The datastore implementation for the OCHRE API.
-- va-logic - https://github.com/Apelon-VA/va-logic.git
-  - The classifier implementation for the OCHRE API
 - va-query-service - https://github.com/Apelon-VA/va-query-service.git
   - The Query Service implementation, which includes Lucene full-text indexing capabilities
+- va-logic - https://github.com/Apelon-VA/va-logic.git
+  - The classifier implementation for the OCHRE API
 - va-solor-goods - https://github.com/Apelon-VA/va-solor-goods.git
   - Tooling to construct a datastore (newtons cradle) and a set of indexes (query-service) and publish the resulting artifacts for consumption
 - va-isaac-gui - https://github.com/Apelon-VA/va-isaac-gui.git
