@@ -6,9 +6,15 @@ The following projects are used to process native source content into the form u
 - va-term-convert-common-base - https://github.com/Apelon-VA/va-term-convert-common-base
   - Shared utility code to aid in building ISAAC Representations of external terminologies (used by LOINC and RxNorm tooling)
 - va-term-convert-loinc - https://github.com/Apelon-VA/va-term-convert-loinc
-  - Converts LOINC from native to an ISAAC form suitable for va-solor-goods
+  - Converts LOINC from native to an ISAAC form suitable for va-solor-goods.  Note that with the LOINC Tech Preview, this project
+    no longer produces an eConcept file - rather - this project only contains a mojo (actually a QuasiMojo) which is executed during
+    the va-solor-goods/solor-all execution.  It does contain a pom file for execution in the loincTP-db module - but this is only for 
+    test purposes - the output of this is a SOLOR database, not an eConcept file.
 - va-term-convert-rxnorm - https://github.com/Apelon-VA/va-term-convert-rxnorm
-  - Converts RxNorm from native to an ISAAC form suitable for va-solor-goods
+  - Converts RxNorm from native to an ISAAC form suitable for va-solor-goods.  Like the LOINC process above, this project also contains a
+    QuasiMojo which is executed during the va-solor-goods/solor-all execution.  UNLIKE the LOINC process above, however, this project also 
+    still produces an eConcept file.  Most of the content is from the eConcept file created here, only some information (Logic Graphs) is 
+    produced within the QuasiMojo.
 - va-term-convert-rf2 - https://github.com/Apelon-VA/va-term-convert-rf2
   - Converts RF2 formats (SNOMED, Extensions) from native to an ISAAC form suitable for va-solor-goods
   
